@@ -19,7 +19,7 @@ var activeTask = new GlideRecord('sc_task');
 activeTask.addEncodedQuery('active=true^request_item=' + ritmSYDID);
 activeTask.query();
 if (activeTask.hasNext()) {
-answer = true;
+    answer = true;
 }
 gs.print(answer);
 ```
