@@ -32,7 +32,7 @@ var answer = new CommonLibraryFunctions().hasValidRecord('sc_task','active=true^
 gs.print(answer);
 ```
 
-You can find the blog post [here]() which lists out other functions that you can use.
+You can find the blog post [here](https://community.servicenow.com/community?id=community_blog&sys_id=2c1a22e4dbb81050feb1a851ca961965) which lists out other functions that you can use.
 
 ### Installation
 
