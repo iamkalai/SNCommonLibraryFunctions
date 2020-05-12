@@ -2,7 +2,7 @@
 
 ## Description
 
-**_This project is an attempt to reduce repeatedly writing boilerplate code, reduce clutter and promote reusability._**
+**_This project is an attempt to reduce boilerplate code, reduce clutter and promote reusability._**
 
 The project creates a new script include called **'CommonLibraryFunctions'**.
 
