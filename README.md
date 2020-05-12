@@ -32,7 +32,49 @@ var answer = new CommonLibraryFunctions().hasValidRecord('sc_task','active=true^
 gs.print(answer);
 ```
 
-You can find the blog post [here](https://community.servicenow.com/community?id=community_blog&sys_id=2c1a22e4dbb81050feb1a851ca961965) which lists out other functions that you can use.
+_Below are the functions included in the script currently_. I am hoping to expand this in future.
+
+- **hasValidRecord**: Utility function that checks if the record exists or not. This can be used both client and server side. Example for this can be found above.
+
+- **getRecord**: Utility function that returns the gliderecord object. This can be used on server side.
+
+```javascript
+//Get the user object
+var userID = gs.getUserID();
+var user = new CommonLibraryFunctions().getRecord('sys_user', 'sys_id=' + userID);
+if (user) {
+    gs.print(user.manager);
+}
+```
+
+- **getFieldValue**: Utility function that returns a field value of a record. This can be used both client and server side.
+
+```javascript
+//Get the manager of user object
+var userID = gs.getUserID();
+var manager = new CommonLibraryFunctions().getFieldValue('sys_user', 'sys_id=' + userID, 'manager');
+gs.print(manager);
+```
+
+- **getRecordsFieldValue**: Utility function that returns a field value of multiple records. Return data also includes duplicate. This can be used both client and server side.
+
+```javascript
+//Get list of active incident numbers
+- var incidents = new CommonLibraryFunctions().getRecordsFieldValue('incident','active=true','number');
+gs.print(incidents);
+```
+
+- **getUniqueValue**: Utility function that returns list of unique values of records. This can be used both client and server side.
+
+```javascript
+//Get list of unique callers for incidents
+var callers = new CommonLibraryFunctions().getUniqueValue('incident','active=true','caller_id');
+gs.print(callers);
+```
+
+- **executeScheduledJob**: Utility function to execute a scheduled job. This can be used both client and server side.
+
+- **customErrorLogger**: Utility function used to log message. This can be used both client and server side.
 
 ### Installation
 
