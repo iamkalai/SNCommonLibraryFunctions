@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2020-05-12 12:50:09">
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2020-05-14 12:22:04">
 <sys_remote_update_set action="INSERT_OR_UPDATE">
 <application display_value="Global">global</application>
 <application_name>Global</application_name>
@@ -7,24 +7,25 @@
 <collisions/>
 <commit_date/>
 <deleted/>
-<description>This contains a script include that contains common functions that can be reused across modules.</description>
+<description>1.0 - This contains a script include that contains common functions that can be reused across modules.
+1.1 - Unit Test Updates.</description>
 <inserted/>
-<name>CommonLibraryFunctions-V1.0</name>
+<name>CommonLibraryFunctions-V1.1</name>
 <origin_sys_id/>
 <parent display_value=""/>
 <release_date/>
 <remote_base_update_set display_value=""/>
 <remote_parent_id/>
-<remote_sys_id>24f679ac1b701c508ed631d7dc4bcb93</remote_sys_id>
+<remote_sys_id>5790dc191bb090108ed631d7dc4bcb20</remote_sys_id>
 <state>loaded</state>
 <summary/>
 <sys_class_name>sys_remote_update_set</sys_class_name>
 <sys_created_by>admin</sys_created_by>
-<sys_created_on>2020-05-12 12:50:09</sys_created_on>
-<sys_id>24f38e201bf01c508ed631d7dc4bcbb5</sys_id>
+<sys_created_on>2020-05-14 12:22:04</sys_created_on>
+<sys_id>e4b054191bb090108ed631d7dc4bcbf9</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2020-05-12 12:50:09</sys_updated_on>
+<sys_updated_on>2020-05-14 12:22:04</sys_updated_on>
 <update_set display_value=""/>
 <update_source display_value=""/>
 <updated/>
@@ -271,15 +272,15 @@ CommonLibraryFunctions.prototype = Object.extendsObject(AbstractAjaxProcessor, {
     type: 'CommonLibraryFunctions'
 });]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-01-10 13:21:16&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;25cea0051b5680108ed631d7dc4bcb6b&lt;/sys_id&gt;&lt;sys_mod_count&gt;82&lt;/sys_mod_count&gt;&lt;sys_name&gt;CommonLibraryFunctions&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_25cea0051b5680108ed631d7dc4bcb6b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-05-12 12:49:15&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
 <payload_hash>-887933573</payload_hash>
-<remote_update_set display_value="CommonLibraryFunctions-V1.0">24f38e201bf01c508ed631d7dc4bcbb5</remote_update_set>
+<remote_update_set display_value="CommonLibraryFunctions-V1.1">e4b054191bb090108ed631d7dc4bcbf9</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>admin</sys_created_by>
-<sys_created_on>2020-05-12 12:50:09</sys_created_on>
-<sys_id>64f38e201bf01c508ed631d7dc4bcbb6</sys_id>
+<sys_created_on>2020-05-14 12:22:04</sys_created_on>
+<sys_id>28b054191bb090108ed631d7dc4bcbfa</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_recorded_at>17208ee9d640000001</sys_recorded_at>
 <sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2020-05-12 12:50:09</sys_updated_on>
+<sys_updated_on>2020-05-14 12:22:04</sys_updated_on>
 <table/>
 <target_name>CommonLibraryFunctions</target_name>
 <type>Script Include</type>
@@ -297,15 +298,15 @@ CommonLibraryFunctions.prototype = Object.extendsObject(AbstractAjaxProcessor, {
 <name>sys_atf_test_188739ec1b701c508ed631d7dc4bcb51</name>
 <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test"><sys_atf_test action="INSERT_OR_UPDATE"><active>true</active><copied_from/><description>This contains unit test for CommonLibraryFunctions scrip include</description><enable_parameterized_testing>false</enable_parameterized_testing><name>Unit Test - CommonLibraryFunctions</name><parameters/><remember/><sys_class_name>sys_atf_test</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 11:56:08</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>188739ec1b701c508ed631d7dc4bcb51</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Unit Test - CommonLibraryFunctions</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_atf_test_188739ec1b701c508ed631d7dc4bcb51</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-12 11:56:08</sys_updated_on></sys_atf_test><sys_variable_value action="delete_multiple" query="document_key=188739ec1b701c508ed631d7dc4bcb51"/></record_update>]]></payload>
 <payload_hash>-705274115</payload_hash>
-<remote_update_set display_value="CommonLibraryFunctions-V1.0">24f38e201bf01c508ed631d7dc4bcbb5</remote_update_set>
+<remote_update_set display_value="CommonLibraryFunctions-V1.1">e4b054191bb090108ed631d7dc4bcbf9</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>admin</sys_created_by>
-<sys_created_on>2020-05-12 12:50:09</sys_created_on>
-<sys_id>a0f38e201bf01c508ed631d7dc4bcbb6</sys_id>
+<sys_created_on>2020-05-14 12:22:04</sys_created_on>
+<sys_id>64b054191bb090108ed631d7dc4bcbfa</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_recorded_at>17208bdfe320000001</sys_recorded_at>
 <sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2020-05-12 12:50:09</sys_updated_on>
+<sys_updated_on>2020-05-14 12:22:04</sys_updated_on>
 <table/>
 <target_name>Unit Test - CommonLibraryFunctions</target_name>
 <type>Test</type>
@@ -321,76 +322,79 @@ CommonLibraryFunctions.prototype = Object.extendsObject(AbstractAjaxProcessor, {
 <category>customer</category>
 <comments/>
 <name>sys_atf_step_1688fde81b701c508ed631d7dc4bcb6f</name>
-<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step"><sys_atf_step action="INSERT_OR_UPDATE"><active>true</active><copied_from/><description>Run Server Side Validation Script</description><display_name>Run Server Side Script</display_name><inputs/><mugshots_cache_json/><notes/><order>1</order><snapshot/><step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config><sys_class_name>sys_atf_step</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>1688fde81b701c508ed631d7dc4bcb6f</sys_id><sys_mod_count>10</sys_mod_count><sys_name>Run Server Side Script</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_atf_step_1688fde81b701c508ed631d7dc4bcb6f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-12 12:37:47</sys_updated_on><table/><test display_value="Unit Test - CommonLibraryFunctions">188739ec1b701c508ed631d7dc4bcb51</test><timeout/><warning_message/></sys_atf_step><sys_variable_value action="delete_multiple" query="document_key=1688fde81b701c508ed631d7dc4bcb6f"/><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>1688fde81b701c508ed631d7dc4bcb6f</document_key><order>100</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_id>9498bde81b701c508ed631d7dc4bcbb6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-12 12:00:25</sys_updated_on><value>3.1</value><variable display_value="">42f2564b73031300440211d8faf6a777</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>1688fde81b701c508ed631d7dc4bcb6f</document_key><order>200</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_id>d098b5601bb01c508ed631d7dc4bcb05</sys_id><sys_mod_count>10</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-12 12:37:47</sys_updated_on><value>(function(outputs, steps, stepResult, assertEqual) {&#13;
-	describe('Unit tests for CommonLibraryFunctions', function() {&#13;
-		&#13;
-		//beforeEach seems to be slower. So leaving the variables inside describe.&#13;
-		var library = new CommonLibraryFunctions();&#13;
-		var userID = gs.getUserID();&#13;
-		var userName = gs.getUserName();&#13;
-		&#13;
-		it('hasValidRecord return true', function() {&#13;
-			expect(library.hasValidRecord('sys_user','sys_id='+userID)).toBe(true);&#13;
-		});&#13;
-		&#13;
-		it('hasValidRecord return false', function() {&#13;
-			expect(library.hasValidRecord('sys_user','user_name=x')).toBe(false);&#13;
-		});&#13;
-		&#13;
-		it('getRecord return valid data', function() {&#13;
-			expect(library.getRecord('sys_user','sys_id='+userID)).not.toBeNull();&#13;
-		});&#13;
-		&#13;
-		it('getRecord return invalid data', function() {&#13;
-			expect(library.getRecord('sys_user','user_name=x')).toBeNull();&#13;
-		});&#13;
-		&#13;
-		it('getFieldValue return valid data', function() {&#13;
-			expect(library.getFieldValue('sys_user','sys_id='+userID,'user_name')).toEqual(userName);&#13;
-		});&#13;
-		&#13;
-		it('getFieldValue return invalid data', function() {&#13;
-			expect(library.getFieldValue('sys_user','user_name=x','user_name')).toEqual('');&#13;
-		});&#13;
-		&#13;
-		it('getRecordsFieldValue return valid data', function() {&#13;
-			expect(library.getRecordsFieldValue('sys_user','active=true','name')).toBeTruthy();&#13;
-		});&#13;
-		&#13;
-		it('getRecordsFieldValue return invalid data', function() {&#13;
-			expect(library.getRecordsFieldValue('sys_user','user_name=x','name')).toBeFalsy();&#13;
-		});&#13;
-		&#13;
-		it('getUniqueValue return valid data', function() {&#13;
-			expect(library.getUniqueValue('sys_user','active=true','name')).toBeTruthy();&#13;
-		});&#13;
-		&#13;
-		it('getUniqueValue return invalid data', function() {&#13;
-			expect(library.getUniqueValue('sys_user','user_name=x','name')).toBeFalsy();&#13;
-		});&#13;
-			&#13;
-	});&#13;
-	&#13;
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step"><sys_atf_step action="INSERT_OR_UPDATE"><active>true</active><copied_from/><description>Run Server Side Validation Script</description><display_name>Run Server Side Script</display_name><inputs/><mugshots_cache_json/><notes/><order>1</order><snapshot/><step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config><sys_class_name>sys_atf_step</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>1688fde81b701c508ed631d7dc4bcb6f</sys_id><sys_mod_count>13</sys_mod_count><sys_name>Run Server Side Script</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_atf_step_1688fde81b701c508ed631d7dc4bcb6f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-14 12:19:43</sys_updated_on><table/><test display_value="Unit Test - CommonLibraryFunctions">188739ec1b701c508ed631d7dc4bcb51</test><timeout/><warning_message/></sys_atf_step><sys_variable_value action="delete_multiple" query="document_key=1688fde81b701c508ed631d7dc4bcb6f"/><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>1688fde81b701c508ed631d7dc4bcb6f</document_key><order>100</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_id>9498bde81b701c508ed631d7dc4bcbb6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-12 12:00:25</sys_updated_on><value>3.1</value><variable display_value="">42f2564b73031300440211d8faf6a777</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>1688fde81b701c508ed631d7dc4bcb6f</document_key><order>200</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_id>d098b5601bb01c508ed631d7dc4bcb05</sys_id><sys_mod_count>13</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-14 12:19:43</sys_updated_on><value>(function (outputs, steps, stepResult, assertEqual) {&#13;
+    describe('Unit tests for CommonLibraryFunctions', function () {&#13;
+&#13;
+        var library, userID, userName;&#13;
+&#13;
+        beforeAll(function () {&#13;
+            library = new CommonLibraryFunctions();&#13;
+            userID = gs.getUserID();&#13;
+            userName = gs.getUserName();&#13;
+        });&#13;
+&#13;
+&#13;
+        it('hasValidRecord return true', function () {&#13;
+            expect(library.hasValidRecord('sys_user', 'sys_id=' + userID)).toBe(true);&#13;
+        });&#13;
+&#13;
+        it('hasValidRecord return false', function () {&#13;
+            expect(library.hasValidRecord('sys_user', 'user_name=x')).toBe(false);&#13;
+        });&#13;
+&#13;
+        it('getRecord return valid data', function () {&#13;
+            expect(library.getRecord('sys_user', 'sys_id=' + userID)).not.toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getRecord return invalid data', function () {&#13;
+            expect(library.getRecord('sys_user', 'user_name=x')).toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getFieldValue return valid data', function () {&#13;
+            expect(library.getFieldValue('sys_user', 'sys_id=' + userID, 'user_name')).toEqual(userName);&#13;
+        });&#13;
+&#13;
+        it('getFieldValue return invalid data', function () {&#13;
+            expect(library.getFieldValue('sys_user', 'user_name=x', 'user_name')).toEqual('');&#13;
+        });&#13;
+&#13;
+        it('getRecordsFieldValue return valid data', function () {&#13;
+            expect(library.getRecordsFieldValue('sys_user', 'active=true', 'name')).toBeTruthy();&#13;
+        });&#13;
+&#13;
+        it('getRecordsFieldValue return invalid data', function () {&#13;
+            expect(library.getRecordsFieldValue('sys_user', 'user_name=x', 'name')).toBeFalsy();&#13;
+        });&#13;
+&#13;
+        it('getUniqueValue return valid data', function () {&#13;
+            expect(library.getUniqueValue('sys_user', 'active=true', 'name')).toBeTruthy();&#13;
+        });&#13;
+&#13;
+        it('getUniqueValue return invalid data', function () {&#13;
+            expect(library.getUniqueValue('sys_user', 'user_name=x', 'name')).toBeFalsy();&#13;
+        });&#13;
+&#13;
+    });&#13;
+&#13;
 })(outputs, steps, stepResult, assertEqual);&#13;
 &#13;
-jasmine.getEnv().execute();&#13;
-</value><variable display_value="">989d9e235324220002c6435723dc3484</variable></sys_variable_value></record_update>]]></payload>
-<payload_hash>-587922187</payload_hash>
-<remote_update_set display_value="CommonLibraryFunctions-V1.0">24f38e201bf01c508ed631d7dc4bcbb5</remote_update_set>
+jasmine.getEnv().execute();</value><variable display_value="">989d9e235324220002c6435723dc3484</variable></sys_variable_value></record_update>]]></payload>
+<payload_hash>1598924042</payload_hash>
+<remote_update_set display_value="CommonLibraryFunctions-V1.1">e4b054191bb090108ed631d7dc4bcbf9</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>admin</sys_created_by>
-<sys_created_on>2020-05-12 12:50:09</sys_created_on>
-<sys_id>a8f38e201bf01c508ed631d7dc4bcbb5</sys_id>
+<sys_created_on>2020-05-14 12:22:04</sys_created_on>
+<sys_id>6cb054191bb090108ed631d7dc4bcbf9</sys_id>
 <sys_mod_count>0</sys_mod_count>
-<sys_recorded_at>17208e41f8c0000001</sys_recorded_at>
+<sys_recorded_at>17213204b6d0000001</sys_recorded_at>
 <sys_updated_by>admin</sys_updated_by>
-<sys_updated_on>2020-05-12 12:50:09</sys_updated_on>
+<sys_updated_on>2020-05-14 12:22:04</sys_updated_on>
 <table/>
 <target_name>Run Server Side Script</target_name>
 <type>Test Step</type>
 <update_domain>global</update_domain>
-<update_guid>6f114eac11b01c509f5711785fe480f2</update_guid>
-<update_guid_history>6f114eac11b01c509f5711785fe480f2:-587922187,51800e2cfab01c50976fb9431c7e674e:2093257247,cd700eac87b01c50269f92196707186d:-2017653522,74afb5e40fb01c5073e4f2977e7b4903:1109770157,d17f3d2c3bb01c506344a675097af446:-552582014,313d31e4d4b01c509e538a87269e44d0:1396218728,c6fcf928a3b01c505a28b88a6b932a07:-1547061550,c1bc396451b01c508219669af2d2cbc5:285057740,39fb75e4e4b01c509e1a84297d3e55e0:-937918743,0a4ab52402b01c507e9e4b9a393d58d1:1069279774,1098b560e4b01c50dc4973e11ae61c07:1061649755</update_guid_history>
+<update_guid>1e201cd5d5b0901079553eaabe079bfd</update_guid>
+<update_guid_history>1e201cd5d5b0901079553eaabe079bfd:1598924042,f80094d51eb090100653f08a31e65deb:-1449420069,40df84d5ecb090100d7f8cf6036d9f48:1598924042,6f114eac11b01c509f5711785fe480f2:-587922187,51800e2cfab01c50976fb9431c7e674e:2093257247,cd700eac87b01c50269f92196707186d:-2017653522,74afb5e40fb01c5073e4f2977e7b4903:1109770157,d17f3d2c3bb01c506344a675097af446:-552582014,313d31e4d4b01c509e538a87269e44d0:1396218728,c6fcf928a3b01c505a28b88a6b932a07:-1547061550,c1bc396451b01c508219669af2d2cbc5:285057740,39fb75e4e4b01c509e1a84297d3e55e0:-937918743,0a4ab52402b01c507e9e4b9a393d58d1:1069279774,1098b560e4b01c50dc4973e11ae61c07:1061649755</update_guid_history>
 <update_set display_value=""/>
 <view/>
 </sys_update_xml>
