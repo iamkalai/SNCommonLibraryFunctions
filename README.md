@@ -1,5 +1,7 @@
 # SNCommonLibraryFunctions
 
+# WARNING: Project is undergoing rewrite. Do not use this in current form. Next version will be updated soon.
+
 ## Description
 
 **_This project is an attempt to reduce boilerplate code, reduce clutter and promote reusability._**
