@@ -1,7 +1,5 @@
 # SNCommonLibraryFunctions
 
-# WARNING: Project is undergoing rewrite. Do not use this in current form. Next version will be updated soon.
-
 ## Description
 
 **_This project is an attempt to reduce boilerplate code, reduce clutter and promote reusability._**
@@ -29,56 +27,210 @@ gs.print(answer);
 You can use the CommonLibraryFunctions to remove boilerplate gliderecord. _Your new script will look something like this_
 
 ```javascript
-var ritmSYDID = 'something';
-var answer = new CommonLibraryFunctions().hasValidRecord('sc_task','active=true^request_item=' + ritmSYDID);
-gs.print(answer);
+var options = {
+    table: "sc_task",
+    query: "active=true^request_item=" + ritmSYDID,
+};
+var answer = JSON.parse(new CommonLibraryFunctions().hasRecord(options));
+gs.print("hasRecord:"+JSON.stringify(answer));
 ```
 
 _Below are the functions included in the script currently_. I am hoping to expand this in future.
 
-- **hasValidRecord**: Utility function that checks if the record exists or not. This can be used both client and server side. Example for this can be found above.
+- **hasRecord**: Utility function that checks if the record exists or not. This can be used both on client and server side.
+
+```javascript
+//Server side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+};
+var answer = JSON.parse(new CommonLibraryFunctions().hasRecord(options));
+gs.print("hasRecord:" + JSON.stringify(answer));
+
+//Client side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+};
+
+var ga = new GlideAjax("CommonLibraryFunctions");
+ga.addParam("sysparm_name", "hasRecord");
+ga.addParam("sysparm_options", JSON.stringify(options));
+ga.getXML(function (response) {
+    var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
+    alert("hasRecord:" + JSON.stringify(answer));
+});
+```
 
 - **getRecord**: Utility function that returns the gliderecord object. This can be used on server side.
 
 ```javascript
-//Get the user object
-var userID = gs.getUserID();
-var user = new CommonLibraryFunctions().getRecord('sys_user', 'sys_id=' + userID);
-if (user) {
-    gs.print(user.manager);
-}
+var options = {
+    table: "incident",
+    query: "active=true",
+};
+var answer = new CommonLibraryFunctions().getRecord(options);
+gs.print("getRecord:" + answer.getRowCount());
 ```
 
-- **getFieldValue**: Utility function that returns a field value of a record. This can be used both client and server side.
+- **getFieldValue**: Utility function that returns a field value of a record. This can be used both on client and server side.
 
 ```javascript
-//Get the manager of user object
-var userID = gs.getUserID();
-var manager = new CommonLibraryFunctions().getFieldValue('sys_user', 'sys_id=' + userID, 'manager');
-gs.print(manager);
+//Server side
+
+var options = {
+    table: "sys_user",
+    query: "sys_id=" + gs.getUserID(),
+    field: "manager",
+};
+var answer = JSON.parse(new CommonLibraryFunctions().getFieldValue(options));
+gs.print("getFieldValue:" + JSON.stringify(answer));
+
+//Client side
+
+var options = {
+    table: "sys_user",
+    query: "sys_id=" + g_user.userID,
+    field: "manager",
+};
+
+var ga = new GlideAjax("CommonLibraryFunctions");
+ga.addParam("sysparm_name", "getFieldValue");
+ga.addParam("sysparm_options", JSON.stringify(options));
+ga.getXML(function (response) {
+    var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
+    alert("getFieldValue:" + JSON.stringify(answer));
+});
 ```
 
-- **getRecordsFieldValue**: Utility function that returns a field value of multiple records. Return data also includes duplicate. This can be used both client and server side.
+- **getRecordsFieldValue**: Utility function that returns a field value of multiple records. Return data also includes duplicate. This can be used both on client and server side.
 
 ```javascript
-//Get list of active incident numbers
-- var incidents = new CommonLibraryFunctions().getRecordsFieldValue('incident','active=true','number');
-gs.print(incidents);
+//Server side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+    field: "number",
+};
+var answer = JSON.parse(new CommonLibraryFunctions().getRecordsFieldValue(options));
+gs.print("getRecordsFieldValue:" + JSON.stringify(answer));
+
+//Client side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+    field: "number",
+};
+
+var ga = new GlideAjax("CommonLibraryFunctions");
+ga.addParam("sysparm_name", "getRecordsFieldValue");
+ga.addParam("sysparm_options", JSON.stringify(options));
+ga.getXML(function (response) {
+    var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
+    alert("getRecordsFieldValue:" + JSON.stringify(answer));
+});
 ```
 
-- **getUniqueValue**: Utility function that returns list of unique values of records. This can be used both client and server side.
+- **getUniqueValue**: Utility function that returns list of unique values of records. This can be used both on client and server side.
 
 ```javascript
-//Get list of unique callers for incidents
-var callers = new CommonLibraryFunctions().getUniqueValue('incident','active=true','caller_id');
-gs.print(callers);
+//Server side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+    field: "category",
+};
+var answer = JSON.parse(new CommonLibraryFunctions().getUniqueValue(options));
+gs.print("getUniqueValue:" + JSON.stringify(answer));
+
+//Client side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+    field: "category",
+};
+
+var ga = new GlideAjax("CommonLibraryFunctions");
+ga.addParam("sysparm_name", "getUniqueValue");
+ga.addParam("sysparm_options", JSON.stringify(options));
+ga.getXML(function (response) {
+    var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
+    alert("getUniqueValue:" + JSON.stringify(answer));
+});
 ```
 
-- **executeScheduledJob**: Utility function to execute a scheduled job. This can be used both client and server side.
+- **getAggregate**: Utility function that returns the glideaggregate object. This can be used on server side.
 
-- **customErrorLogger**: Utility function used to log message. This can be used both client and server side.
+```javascript
+var options = {
+    table: "incident",
+    query: "active=true",
+};
+var answer = new CommonLibraryFunctions().getAggregate(options);
+gs.print("getAggregate:" + answer.getRowCount());
+```
+
+- **getRecordCount**: Utility function that returns count of records. This can be used on both client and server side.
+
+```javascript
+//Server side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+};
+var answer = JSON.parse(new CommonLibraryFunctions().getRecordCount(options));
+gs.print("getRecordCount:" + JSON.stringify(answer));
+
+//Client side
+
+var options = {
+    table: "incident",
+    query: "active=true",
+};
+
+var ga = new GlideAjax("CommonLibraryFunctions");
+ga.addParam("sysparm_name", "getRecordCount");
+ga.addParam("sysparm_options", JSON.stringify(options));
+ga.getXML(function (response) {
+    var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
+    alert("getRecordCount:" + JSON.stringify(answer));
+});
+```
+
+- **executeScheduledJob**: Utility function to execute a scheduled job. This can be used both on client and server side.
+
+- **customErrorLogger**: Utility function used to log message. This can be used both on client and server side.
+
+```javascript
+//Server side
+
+new CommonLibraryFunctions().log({ message: "Log Message" });
+
+//Client side
+
+var options = {
+    message: "Log Message"
+};
+var ga = new GlideAjax("CommonLibraryFunctions");
+ga.addParam("sysparm_name", "log");
+ga.addParam("sysparm_options", JSON.stringify(options));
+ga.getXML();
+```
 
 ### Installation
 
-- Import the updateset found in [**dist**](/dist) folder. Committing the updateset will create a script include and a related unit test for the script.
+- Import and commit the updateset found in [**dist**](/dist) folder.
+- A new script include and a related unit test for the script.
 - Run the unit test if you modify any functions that have been provided.
+
+### License
+
+GNU General Public License v3.0

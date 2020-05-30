@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2020-05-30 12:13:13">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>1.0 - This contains a script include that contains common functions that can be reused across modules.
+1.1 - Unit Test Updates.
+1.2 - Refractor and remove redundant code.</description>
+<inserted/>
+<name>CommonLibraryFunctions-V1.2</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>cdfe5e561b8d90908ed631d7dc4bcbd0</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-05-30 12:13:12</sys_created_on>
+<sys_id>cf1866561bcd90908ed631d7dc4bcbcd</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-05-30 12:13:12</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_atf_step_1688fde81b701c508ed631d7dc4bcb6f</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step"><sys_atf_step action="INSERT_OR_UPDATE"><active>true</active><copied_from/><description>Run Server Side Validation Script</description><display_name>Run Server Side Script</display_name><inputs/><mugshots_cache_json/><notes/><order>1</order><snapshot/><step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config><sys_class_name>sys_atf_step</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>1688fde81b701c508ed631d7dc4bcb6f</sys_id><sys_mod_count>25</sys_mod_count><sys_name>Run Server Side Script</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_atf_step_1688fde81b701c508ed631d7dc4bcb6f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-30 12:08:43</sys_updated_on><table/><test display_value="Unit Test - CommonLibraryFunctions">188739ec1b701c508ed631d7dc4bcb51</test><timeout/><warning_message/></sys_atf_step><sys_variable_value action="delete_multiple" query="document_key=1688fde81b701c508ed631d7dc4bcb6f"/><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>1688fde81b701c508ed631d7dc4bcb6f</document_key><order>100</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_id>9498bde81b701c508ed631d7dc4bcbb6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-12 12:00:25</sys_updated_on><value>3.1</value><variable display_value="">42f2564b73031300440211d8faf6a777</variable></sys_variable_value><sys_variable_value action="INSERT_OR_UPDATE"><document>sys_atf_step</document><document_key>1688fde81b701c508ed631d7dc4bcb6f</document_key><order>200</order><sys_class_name>sys_variable_value</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 12:00:25</sys_created_on><sys_id>d098b5601bb01c508ed631d7dc4bcb05</sys_id><sys_mod_count>25</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-30 12:08:43</sys_updated_on><value>(function (outputs, steps, stepResult, assertEqual) {&#13;
+    describe('Unit tests for CommonLibraryFunctions', function () {&#13;
+&#13;
+        var library, userID, validOption, invalidOption, missingOption;&#13;
+&#13;
+        beforeAll(function () {&#13;
+            library = new CommonLibraryFunctions();&#13;
+            userID = gs.getUserID();&#13;
+            validOption = {&#13;
+                table: "incident",&#13;
+                query: "active=true",&#13;
+                field: "category",&#13;
+            };&#13;
+            invalidOption = {&#13;
+                table: "incident1",&#13;
+                query: "active=true",&#13;
+                field: "category",&#13;
+            };&#13;
+            missingOption = {&#13;
+                table: "incident",&#13;
+            };&#13;
+        });&#13;
+&#13;
+&#13;
+        it('hasRecord return true', function () {&#13;
+            expect(JSON.parse(library.hasRecord(validOption)).result).toBe(true);&#13;
+        });&#13;
+&#13;
+        it('hasRecord return false', function () {&#13;
+            expect(JSON.parse(library.hasRecord(invalidOption)).result).toBe(false);&#13;
+        });&#13;
+&#13;
+        it('hasRecord return error', function () {&#13;
+            expect(JSON.parse(library.hasRecord(missingOption)).status).toEqual("Error");&#13;
+        });&#13;
+&#13;
+        it('getRecord has records', function () {&#13;
+            expect(library.getRecord(validOption).getRowCount() &gt; 0).toBe(true);&#13;
+        });&#13;
+&#13;
+        it('getRecord return null', function () {&#13;
+            expect(library.getRecord(invalidOption)).toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getRecord return error', function () {&#13;
+            expect(JSON.parse(library.getRecord(missingOption)).status).toEqual("Error");&#13;
+        });&#13;
+&#13;
+        it('getFieldValue return not null', function () {&#13;
+            expect(JSON.parse(library.getFieldValue(validOption)).result).not.toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getFieldValue return null', function () {&#13;
+            expect(JSON.parse(library.getFieldValue(invalidOption)).result).toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getFieldValue return error', function () {&#13;
+            expect(JSON.parse(library.getFieldValue(missingOption)).status).toEqual("Error");&#13;
+        });&#13;
+&#13;
+        it('getRecordsFieldValue return not null', function () {&#13;
+            expect(JSON.parse(library.getRecordsFieldValue(validOption)).result).not.toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getRecordsFieldValue return null', function () {&#13;
+            expect(JSON.parse(library.getRecordsFieldValue(invalidOption)).result).toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getRecordsFieldValue return error', function () {&#13;
+            expect(JSON.parse(library.getRecordsFieldValue(missingOption)).status).toEqual("Error");&#13;
+        });&#13;
+&#13;
+        it('getUniqueValue return not null', function () {&#13;
+            expect(JSON.parse(library.getUniqueValue(validOption)).result).not.toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getUniqueValue return null', function () {&#13;
+            expect(JSON.parse(library.getUniqueValue(invalidOption)).result).toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getUniqueValue return error', function () {&#13;
+            expect(JSON.parse(library.getUniqueValue(missingOption)).status).toEqual("Error");&#13;
+        });&#13;
+&#13;
+        it('getAggregate has records', function () {&#13;
+            expect(library.getAggregate(validOption).getRowCount() &gt; 0).toBe(true);&#13;
+        });&#13;
+&#13;
+        it('getAggregate return null', function () {&#13;
+            expect(library.getAggregate(invalidOption)).toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getAggregate return error', function () {&#13;
+            expect(JSON.parse(library.getAggregate(missingOption)).status).toEqual("Error");&#13;
+        });&#13;
+&#13;
+        it('getRecordCount return not null', function () {&#13;
+            expect(JSON.parse(library.getRecordCount(validOption)).result).not.toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getRecordCount return null', function () {&#13;
+            expect(JSON.parse(library.getRecordCount(invalidOption)).result).toBeNull();&#13;
+        });&#13;
+&#13;
+        it('getRecordCount return error', function () {&#13;
+            expect(JSON.parse(library.getRecordCount(missingOption)).status).toEqual("Error");&#13;
+        });&#13;
+&#13;
+    });&#13;
+&#13;
+})(outputs, steps, stepResult, assertEqual);&#13;
+&#13;
+jasmine.getEnv().execute();</value><variable display_value="">989d9e235324220002c6435723dc3484</variable></sys_variable_value></record_update>]]></payload>
+<payload_hash>1689809391</payload_hash>
+<remote_update_set display_value="CommonLibraryFunctions-V1.2">cf1866561bcd90908ed631d7dc4bcbcd</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-05-30 12:13:12</sys_created_on>
+<sys_id>071866561bcd90908ed631d7dc4bcbce</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>172657bfb030000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-05-30 12:13:12</sys_updated_on>
+<table/>
+<target_name>Run Server Side Script</target_name>
+<type>Test Step</type>
+<update_domain>global</update_domain>
+<update_guid>19172ed200cd9090361fe609d975e4e8</update_guid>
+<update_guid_history>19172ed200cd9090361fe609d975e4e8:1689809391,06b6e2d250cd9090d7f099f871226c27:141329938,ab16e2928ecd9090513e6618a034369a:1948055957,fce5ee1223cd909073032d6c6993e140:-451530376,4665aa1e288d90902c36fae2cdd6bdcd:-410497643,f1c4ea1e128d90901c98bf9687e0b60d:-1800812250,aff2aa1e578d9090bb1d28ed417cf472:1303839,7bc2661ea68d90902807861adc14784c:-142083823,91a2221e108d9090a3737f41c568d5bb:1260725333,5182ee96378d909018cbd16281004fb8:-1964936523,ca226a9a6f8d9090042fe0db2948ea2d:-1409853003,b5c12a9ae88d9090f80ff2e817dcc2bd:685789075,1e201cd5d5b0901079553eaabe079bfd:1598924042,f80094d51eb090100653f08a31e65deb:-1449420069,40df84d5ecb090100d7f8cf6036d9f48:1598924042,6f114eac11b01c509f5711785fe480f2:-587922187,51800e2cfab01c50976fb9431c7e674e:2093257247,cd700eac87b01c50269f92196707186d:-2017653522,74afb5e40fb01c5073e4f2977e7b4903:1109770157,d17f3d2c3bb01c506344a675097af446:-552582014,313d31e4d4b01c509e538a87269e44d0:1396218728,c6fcf928a3b01c505a28b88a6b932a07:-1547061550,c1bc396451b01c508219669af2d2cbc5:285057740,39fb75e4e4b01c509e1a84297d3e55e0:-937918743,0a4ab52402b01c507e9e4b9a393d58d1:1069279774,1098b560e4b01c50dc4973e11ae61c07:1061649755</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_atf_test_188739ec1b701c508ed631d7dc4bcb51</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test"><sys_atf_test action="INSERT_OR_UPDATE"><active>true</active><copied_from/><description>This contains unit test for CommonLibraryFunctions script include</description><enable_parameterized_testing>false</enable_parameterized_testing><name>Unit Test - CommonLibraryFunctions</name><parameters/><remember/><sys_class_name>sys_atf_test</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-12 11:56:08</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>188739ec1b701c508ed631d7dc4bcb51</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Unit Test - CommonLibraryFunctions</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_atf_test_188739ec1b701c508ed631d7dc4bcb51</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-30 11:37:38</sys_updated_on></sys_atf_test><sys_variable_value action="delete_multiple" query="document_key=188739ec1b701c508ed631d7dc4bcb51"/></record_update>]]></payload>
+<payload_hash>-2087859603</payload_hash>
+<remote_update_set display_value="CommonLibraryFunctions-V1.2">cf1866561bcd90908ed631d7dc4bcbcd</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-05-30 12:13:12</sys_created_on>
+<sys_id>0f1866561bcd90908ed631d7dc4bcbce</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>172655f860b0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-05-30 12:13:12</sys_updated_on>
+<table/>
+<target_name>Unit Test - CommonLibraryFunctions</target_name>
+<type>Test</type>
+<update_domain>global</update_domain>
+<update_guid>f5ff9e56648d9090caf53c84847193e8</update_guid>
+<update_guid_history>f5ff9e56648d9090caf53c84847193e8:-2087859603,6d97bdac6e701c5050bfd72b0c0cdeca:-705274115</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_25cea0051b5680108ed631d7dc4bcb6b</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.CommonLibraryFunctions&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description&gt;This script include is meant to holds reusable functions that can be reused across modules.&amp;#13;
+This contains both client and server side functions.&lt;/description&gt;&lt;name&gt;CommonLibraryFunctions&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var CommonLibraryFunctions = Class.create();
+
+CommonLibraryFunctions.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+
+    initialize: function(request, responseXML, gc) {
+        AbstractAjaxProcessor.prototype.initialize.call(this, request, responseXML, gc); //DESIGN NOTE: This ensure glideajax works.
+        arrayUtil = new ArrayUtil();
+        self = this;
+        notNil = JSUtil.notNil;
+        nil = JSUtil.nil;
+        isEmpty = JSUtil.isEmpty;
+        stringify = JSON.stringify;
+        parse = JSON.parse;
+        missingParam = self._newStatus("Error", "Missing function parameters");
+    },
+
+    /**
+     * This is copied from one of the OOB script as Object.assign is not working.
+     * This is used to merge two objects.
+     * 
+     * @param {Object} target
+     * @param {Object} arg
+     * @return {Object} to
+     */
+
+    _assign: function(target, arg) {
+        if (target === null) {
+            throw new TypeError('Cannot convert undefined or null to object');
+        }
+        var to = Object(target);
+        for (var index = 1; index &lt; arguments.length; index++) {
+            var nextSource = arguments[index];
+            if (nextSource != null) {
+                for (var nextKey in nextSource) {
+                    if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                        to[nextKey] = nextSource[nextKey];
+                    }
+                }
+            }
+        }
+        return to;
+    },
+
+    /**
+     * This is used to remove keys from the object passed.
+     * 
+     * @param {Object} source
+     * @param {string[]} excluded - array of keys that needs to be removed.
+     * @return {Object} target
+     */
+
+    _remove: function(source, excluded) {
+        if (source == null) return {};
+        var target = {};
+        var sourceKeys = Object.keys(source);
+        var key, i;
+        for (i = 0; i &lt; sourceKeys.length; i++) {
+            key = sourceKeys[i];
+            if (excluded.indexOf(key) &gt;= 0) continue;
+            target[key] = source[key];
+        }
+        return target;
+    },
+
+    /**
+     * Returns a new status object.
+     * 
+     * @param {string} status
+     * @param {string} result
+     * @return {Object}
+     */
+
+    _newStatus: function(status, result) {
+        return {
+            status: status,
+            result: result
+        };
+    },
+
+    /**
+     * Checks if key exists in the object.
+     * 
+     * @param {Object} object
+     * @param {string} key
+     * @return {boolean}
+     */
+
+    _isValidKey: function(object, key) {
+        return object.hasOwnProperty(key);
+    },
+
+    /**
+     * Checks if key is present and if key is not empty.
+     * 
+     * @param {Object} object
+     * @param {string} key
+     * @return {boolean}
+     */
+
+    _hasKeyValue: function(object, key) {
+        return (self._isValidKey(object, key) &amp;&amp; notNil(object[key])) ? true : false;
+    },
+
+    /**
+     * Gets the parameter to be used by functions.
+     * 
+     * @param {Object} params
+     * @return {Object}
+     */
+
+    _getParams: function(params) {
+        return self._isClient() ?
+            self._clientParams() :
+            self._serverParams(params);
+    },
+
+    /**
+     * Checks if the function is being called from client or server side.
+     * 
+     * @return {boolean}
+     */
+
+    _isClient: function() {
+        return notNil(self.getParameter("sysparm_options"));
+    },
+
+    /**
+     * Gets the parameter passed from client side.
+     * 
+     * @return {Object}
+     */
+
+    _clientParams: function() {
+        return parse(self.getParameter("sysparm_options"));
+    },
+
+    /**
+     * Gets the parameter passed from server side.
+     * 
+     * @return {Object}
+     */
+
+    _serverParams: function(params) {
+        return params;
+    },
+
+    /**
+     * Checks if any mandatory function parameter is missing.
+     * 
+     * @param {Object} params
+     * @return {boolean} answer
+     */
+
+    _isParamsMissing: function(params) {
+        var answer = false;
+        var requiredParams = params.required;
+        if (notNil(requiredParams)) {
+            var paramKeys = requiredParams;
+            for (var i = 0; i &lt; paramKeys.length; i++) {
+                if (!self._hasKeyValue(params, paramKeys[i])) {
+                    answer = true;
+                    break;
+                }
+            }
+        }
+        return answer;
+    },
+
+    /**
+     * Executes a function passed in try catch block.
+     * 
+     * @param {Function} method
+     * @param {Object} params
+     * @return {Object}
+     */
+
+    _tryCatch: function(method, params) {
+        return (function() {
+            try {
+                return method.call(self, params);
+            } catch (error) {
+                return self._defaultExceptionHandler(error);
+            }
+        }).call(self);
+    },
+
+    /**
+     * Default exception handler for the library.
+     * 
+     * @param {Object} error - Error object.
+     * @return {Object}
+     */
+
+    _defaultExceptionHandler: function(error) {
+        self.log({
+            type: "error",
+            message: error.toString()
+        });
+        return self._newStatus("Error", error.toString());
+    },
+
+    /**
+     * Function used to perform gliderecord query. 
+     * 
+     * @param {Object} params - contains the tablename, filter and other parameters for performing query
+     * @return {Object|null}
+     */
+
+    _queryRecord: function(params) {
+        var gRecord = new GlideRecord(params.table);
+
+        if (isEmpty(gRecord)) {
+            return null;
+        }
+
+        gRecord.addEncodedQuery(params.query);
+        notNil(params.limit) &amp;&amp; gRecord.setLimit(params.limit);
+        gRecord.query();
+        return gRecord.hasNext() ? gRecord : null;
+    },
+
+    /**
+     * Function used to perform glideaggregate query.
+     * 
+     * @param {Object} params - contains the tablename, filter and other parameters for performing query.
+     * @return {Object|null}
+     */
+
+    _queryAggregate: function(params) {
+        var gAggregate = new GlideAggregate(params.table);
+
+        if (isEmpty(gAggregate)) {
+            return null;
+        }
+
+        gAggregate.addEncodedQuery(params.query);
+        notNil(params.field) &amp;&amp; gAggregate.groupBy(params.field);
+        notNil(params.count) &amp;&amp; gAggregate.addAggregate('COUNT');
+        gAggregate.query();
+        return gAggregate.hasNext() ? gAggregate : null;
+    },
+
+    /**
+     * Function used to check if a record exists or not. This can be used on both server and client side.
+     * 
+     * @param {Object} params - table, query are required parameters
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    hasRecord: function(params) {
+        var requiredParams = ["table", "query"];
+        var answer = self._newStatus("Success", false);
+
+        var useParams = self._assign({
+            limit: 1,
+            required: requiredParams
+        }, self._getParams(params));
+
+        if (self._isParamsMissing(useParams)) {
+            return stringify(missingParam);
+        }
+
+        var record = self._tryCatch(self._queryRecord, useParams);
+        if (notNil(record)) {
+            answer = self._newStatus("Success", true);
+        }
+
+        return stringify(answer);
+    },
+
+    /**
+     * Function that returns the gliderecord object. This can be used on server side only.
+     * 
+     * @param {Object} params - table, query are required parameters
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    getRecord: function(params) {
+        var requiredParams = ["table", "query"]; //Takes optional limit parameter to limit the number of records to be returned.
+        var useParams = self._assign({
+            required: requiredParams
+        }, self._serverParams(params));
+
+        return (self._isParamsMissing(useParams)) ? stringify(missingParam) : self._tryCatch(self._queryRecord, useParams);
+    },
+
+    /**
+     * Function that returns a field value of a record. This can be used on both server and client side.
+     * 
+     * @param {Object} params - table, query, field are required parameters
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    getFieldValue: function(params) {
+        var requiredParams = ["table", "query", "field"];
+        var answer = self._newStatus("Success", null);
+
+        var useParams = self._assign({
+            limit: 1,
+            required: requiredParams
+        }, self._getParams(params));
+
+        if (self._isParamsMissing(useParams)) {
+            return stringify(missingParam);
+        }
+
+        var record = self._tryCatch(self._queryRecord, useParams);
+        if (notNil(record) &amp;&amp; record.next()) {
+            answer = self._newStatus("Success", record.getValue(useParams.field));
+        }
+
+        return stringify(answer);
+    },
+
+    /**
+     * Function that returns a field value of multiple records. This can be used on both server and client side.
+     * 
+     * @param {Object} params - table, query, field are required parameters
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    //DESIGN NOTE: Try using getUniqueValue() for larger dataset or if unique value is required.
+
+    getRecordsFieldValue: function(params) {
+        var results = [];
+
+        var requiredParams = ["table", "query", "field"];
+        var answer = self._newStatus("Success", null);
+
+        var useParams = self._assign({
+            required: requiredParams
+        }, self._getParams(params));
+
+        if (self._isParamsMissing(useParams)) {
+            return stringify(missingParam);
+        }
+
+        var records = self._tryCatch(self._queryRecord, useParams);
+        if (notNil(records)) {
+            while (records.next()) {
+                results.push(records.getValue(useParams.field));
+            }
+            answer = self._newStatus("Success", results);
+        }
+
+        return stringify(answer);
+    },
+
+    /**
+     * Function that returns list of unique values of records. This can be used on both server and client side.
+     * 
+     * @param {Object} params - table, query, field are required parameters
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    getUniqueValue: function(params) {
+        var results = [];
+
+        var requiredParams = ["table", "query", "field"];
+        var answer = self._newStatus("Success", null);
+
+        var useParams = self._assign({
+            required: requiredParams
+        }, self._getParams(params));
+
+        if (self._isParamsMissing(useParams)) {
+            return stringify(missingParam);
+        }
+
+        var records = self._tryCatch(self._queryAggregate, useParams);
+        if (notNil(records)) {
+            while (records.next()) {
+                results.push(records.getValue(useParams.field));
+            }
+            answer = self._newStatus("Success", results);
+        }
+
+        return stringify(answer);
+    },
+
+    /**
+     * Function that returns the glideaggregate object. This can be used on server side only.
+     * 
+     * @param {Object} params - table, query are required parameters. field is an optional parameter.
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    getAggregate: function(params) {
+        var requiredParams = ["table", "query"];
+        var useParams = self._assign({
+            required: requiredParams
+        }, self._serverParams(params));
+
+        return (self._isParamsMissing(useParams)) ? stringify(missingParam) : self._tryCatch(self._queryAggregate, useParams);
+    },
+
+    /**
+     * Function that returns record count. This can be used on both server and client side.
+     * 
+     * @param {Object} params - table, query are required parameters
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    getRecordCount: function(params) {
+        var requiredParams = ["table", "query"];
+        var answer = self._newStatus("Success", null);
+        var useParams = self._assign({
+            count: 'yes',
+            required: requiredParams
+        }, self._getParams(params));
+
+        if (self._isParamsMissing(useParams)) {
+            return stringify(missingParam);
+        }
+        useParams = notNil(useParams.field) ? self._remove(useParams, ["field"]) : useParams; //adding this protect even if the user adds field
+
+        var aggregate = self._tryCatch(self._queryAggregate, useParams);
+        if (notNil(aggregate) &amp;&amp; aggregate.next()) {
+            answer = self._newStatus("Success", aggregate.getAggregate('COUNT'));
+        }
+
+        return stringify(answer);
+    },
+
+    /**
+     * Function that executes a scheduled job. This can be used on both server and client side.
+     * 
+     * @param {Object} params - table, query are required parameters
+     * @return {Object} - Contains status and result attribute.
+     */
+
+    executeScheduledJob: function(params) {
+
+        var requiredParams = ["table", "query"];
+        var answer = self._newStatus("Success", false);
+
+        var useParams = self._assign({
+            limit: 1,
+            required: requiredParams
+        }, self._getParams(params));
+
+        if (self._isParamsMissing(useParams)) {
+            return stringify(missingParam);
+        }
+
+        var record = self._tryCatch(self._queryRecord, useParams);
+        if (notNil(record) &amp;&amp; record.next()) {
+            SncTriggerSynchronizer.executeNow(record);
+            answer = self._newStatus("Success", true);
+        }
+
+        return stringify(answer);
+
+    },
+
+    /**
+     * Function that is used to log message. This can be used on both server and client side.
+     * 
+     * @param {Object} params - message is the required parameter. Optional parameters include source, type. 
+     */
+
+    log: function(params) {
+        try {
+            var useParams = self._assign({
+                required: ["message"]
+            }, self._getParams(params));
+
+            if (self._isParamsMissing(useParams)) {
+                return stringify(missingParam);
+            }
+
+            var source = notNil(useParams.source) ? useParams.source : "CommonLibraryFunctions";
+            var type = (notNil(useParams.type) &amp;&amp; useParams.type == "error") ? "error" : "info";
+
+            (type == 'error') ? gs.logError(useParams.message, source): gs.log(useParams.message, source);
+        } catch (err) {
+            gs.logError("Error in CommonLibraryFunctions:log-" + err.toString(), "CommonLibraryFunctions");
+        }
+
+    },
+
+    type: 'CommonLibraryFunctions'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-01-10 13:21:16&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;false&lt;/sys_customer_update&gt;&lt;sys_id&gt;25cea0051b5680108ed631d7dc4bcb6b&lt;/sys_id&gt;&lt;sys_mod_count&gt;312&lt;/sys_mod_count&gt;&lt;sys_name&gt;CommonLibraryFunctions&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_25cea0051b5680108ed631d7dc4bcb6b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-05-30 11:36:52&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1255610785</payload_hash>
+<remote_update_set display_value="CommonLibraryFunctions-V1.2">cf1866561bcd90908ed631d7dc4bcbcd</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2020-05-30 12:13:12</sys_created_on>
+<sys_id>cf1866561bcd90908ed631d7dc4bcbce</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>172655ed1a30000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2020-05-30 12:13:12</sys_updated_on>
+<table/>
+<target_name>CommonLibraryFunctions</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>a2cfde96308d909003eb06bbc79e465f</update_guid>
+<update_guid_history>a2cfde96308d909003eb06bbc79e465f:-1255610785,ec3c8ed67e0d90908b80beec2cd24795:-1965801022,d3d606de71c99090c15292a1e1835607:-1372553586,2b352dd6ae099090f109aee45d5ed700:-1035523039,7e24a1167b099090b3738e022b429365:797158943,fb60fd2312f05050e63d96713a16ce78:-837218966,e640f92b6cf05050e5a187be2ee7a2a7:-718107812,a77f2d23cbf050505a26ef01c67bb573:1305482123,071f612ba1f050503871ce0ccc6b559e:1113553137,df8ae967a7b0505088849bdd5a23de61:-1853005423,322ae52f83b0505080a1b6a65c455975:-865449913,1697edebccb0505039b6d0daca9fdb58:-297987807,1203406bfa3810509a68cb2809e394f8:-2030722456,6882042b04381050ab115cc3e05e2739:-301192946,2052846709381050ff71008b671ea3c2:346437908,2f0208e7183810508cd771ebaf455737:449203390,99a180a7e9381050189e02e51c901d56:-622540191,073180a75a381050c60f846c1e88464e:-794715902,a9f08867213810505643c37b26b1eac5:1970043518,02300ce36c3810503e31a5cd3566e2f6:-928405557,eaf940feb1f8d810c2908e88ad5d7533:1503832325,1c8fbd2e477c98106c9a8d0f641e0da5:2011540479,4a3a25eeabf89810c478eb902ca4db86:778210087,635825eee7f8981060b3c02d66757434:894444744,7248a1eebaf898100d92a4f88fe23105:575128592,e7282d6644f89810a16748483ded1c75:894444744,5c67ad2a1df89810715c6460e668ee18:-1243744656,f692ed6e86b89810f63e122e7a116eb3:-1772671869,01f1a926e3f89810d4006a243804eaa8:-825746873,01d1ed62b7f898108d20c59971c843c8:-1766802553,3d60e96e74b89810ea6860db620f11d9:-281133993,564f99ae65b89810dffdd8addb8e7ec6:-198741770,778cd9ea0db898106eda5ff1db3b512d:-442442384,ba1c51a253b898107764f04ba79db2bc:-528857006,23c851a2cab89810804ec4765cf7b197:941606325,b91799a217b89810668beeeacde32ccb:1871969973,d9f6d5a200b898106dae2a4e076d7856:1694069335,de6491aedf789810c3ef8fe506bc66ee:1947543641,c4341d6eec7898105d49b5aad0a182f7:1208334105,e40b892e6c3898109d7418454ccb410a:-928476419,19878122ea389810fc1cd922448f6339:-210516945,e494c12635389810da5858dd715f4f7c:626187278,e12245ee1df49810821f0c0d9a5b73d3:-387890333,28124122c338981032c962e5632a5fb3:1520071843,20f1c1ee2af49810056c5476c43f27f0:-510110458,1c51096e04f49810ca01fad382f1cd3c:1254922155,f770c56e46f49810781fffc6aab17928:639384066,9240892aaef49810026282e1d54207dc:816531221,507fb82ae0f498106ff5ff7a79d9c6e5:1201315541,dc2f746a36f49810b0cadbd25fc749f8:-1720295802,45c970a25bf4981001c404af602a54b1:-2041258531,06c330e67eb498106f271b45946382b5:-42499844,2c93b8e240b498106b71fbea0e84b266:389821997,9323b0e222b498109f37cb347242fc41:199872282,160330e690b4981006a5d45b46b7febd:-355153814,3a22b42695b498109319cae62bcd7c32:-997020666,92b1f0e2a3b4981073d54b0a6c3c4d51:-1262594376,b0a13026c6b49810d744390f32c1d809:-658886506,d081fc62dfb49810c130ec0d959030a3:-463949008,da41f0e269b498100dcf4d06c2f3244b:-1262594376,8ce0bca28eb498108e35bfdf4947ffdf:-644126121,602ee0ae1d7498101856635c708db0b3:-363851375,f8fce8eacb7498103993a45c7a91c225:1265502332,b99c60a27674981091d8996115048c80:-363851375,aadba4aa3e74981011603731170ae9e2:-1044045124,f17b686a81349810a65e0a49e76d7306:-287364870,cb5b606af8749810e439a886f87f1462:-1134344262,b420e0e632349810d25faebe4954d562:-799393343,2410a826e6349810f99b1c7de22040aa:-1369190271,87ff5c269c34981031a589950a689515:-988833711,9eafd86630349810b79c46f678c3e07f:176513070,518f9826e5349810468e39cb95f09d43:-1402055410,933f5ce262349810e04cb873b9a6a74a:-1782266061,1f9e9826e0349810b5a9878e9848c93c:1388831907,17ed5c62cc34981087587d33b8572a37:1334089774,45b59ce202f09810eaccf4e1430702a8:-499622384,0b8598e21ff09810b7edbb817664495a:1804706285,18551c62b8f098103969abeb33282408:-753902900,b92598e206f09810534e16bbe5beb74b:-1669315860,ac055062b9f09810d201720ec1aa8faf:392135046,60e498e2acf0981093828351d70c9f46:-1291540634,86b410e22cf098100cca70692f351345:2074265318,4774d862d3f098104d22e00aaf0636b8:-243465201,0bb398ee56b098108e75c61e6dfe5480:1078779341,06535cee97b0981071f9b9aa9569f69a:815804771,a1335cee32b0981036b35a6a546e5586:2126709032,5c03182218f09810a1d85b573366c322:612470996,179298ee37b09810e575b777fb1f5857:-38427980,ff7258ee90b0981071a3bbd4fa4831cd:-1947262956,da318ceab73098103984139b9e2db686:2038300016,90f0c422de7098108efbf97f0f57a95b:1330975199,e5eff71280709810f4c0ea0a8165022f:1170154419,de7ffbde9c309810e1ac90909db5c976:909698152,131fbf5a9d309810fe6abc927f4b1275:2040508198,882dbfda7730981010191cd13f57a734:1863512473,f552331af1fc5810e7d69b81501fe6c3:-823669897,8222fb961ffc5810c5a27220a1691875:1867971627,b4d17bd23cfc5810c9de02a82d7cc0b4:1975575227,4361f39279fc58108cd8d2ec4a713050:-1151664319,5baf6bd226fc58106eea7ae98cfdc7ac:-1927554932,c87fef1212fc58103776179ef9179e4c:-243085770,886f2f9230fc58107632d02565b7c617:258823513,fa2fe7de57bc5810668a8c12935be81b:-1670823247,d20fe792b3fc5810d92764d38c0cb1b4:-1634675572,7dae6f522bfc58101e8caec969766e8c:546751323,f57eabde3dbc58100e3fccb01f264902:1177243633,8c6ea31e73bc581086e7794866a56caf:-1553193871,05461fdea9f8581095268007cadfbfb7:1237759754,8a169316153c581073283ca546393256:-59566453,65049316973c581049963d89ab34bd36:-1907894048,a2721b52353c581027a5ce7cd57334c7:-246972684,94e1db5e57f85810a02c42aace0cc3e0:1447033540,ee611fde24f85810a753a1e2840115b0:1753928890,87c01f9eddf858104cd598bf59292812:68942987,20309f5a95f85810e2e0ca85edcd1792:869256905,68ff475eacf858103e45d7ce43cdbd01:1704868333,b9fd0316eff858104b1f2be04ce2008e:-1731872250,7b5c0f92d6f8581041593b0ef43322c9:-1279166004,033c87d212f8581038d46de257881a10:26117919,0eeb8f920ef858104911dd0ec4070a88:1576012437,8dca9552d4305810e9e4390309d2b842:483786853,463ad952bf3058105f58a7ec775a07d5:664015012,ef691d524d30581001c9e68636e6bb0b:1001797726,c2395952d6305810b30c50d53c6fda32:490483051,5919d152ae305810f895bf160bccbafa:-2072629075,a80951de33fc1810d3be3ddceea87bde:1409564307,30f8d512d2305810f0c9997e0ac1c422:158058775,44d8951ecbfc1810f075a12678955ef9:25096532,a478d1de80fc1810cc3d4c0ee20ab8cc:158058775,aab4119a79fc1810249ed15a6731c245:1409564307,dd745d5629fc1810e122c892f0014e93:-2105344970,a2f3519672fc1810bd6e9825cfc7c591:-777433798,78c3951a5ffc1810167b05ee02f84239:1639260526,9e52555652fc181055ac621206a109c7:-2128144584,0d32155629fc181083af40f177fbc18f:1359231996,ba021956fefc1810291c86b69a5984c0:319508529,f0e115568bfc18107ca3672069daf589:561356484,97f01dd271fc1810ed8511b76990ebc3:-231813371,8f8011d2b7fc1810bac1ecaa4592f4f6:-287504957,2d009ddafabc1810bdf7f67ecba3fe26:-595360723,eedf8d5269fc1810e5ef0e916177f737:-1547682158,2d7e41da71bc1810f79df126ab2bf108:-1337989347,241e4d9a15bc18101e8b7ca5f4b4f82e:165548039,69fcc91e51bc181009c8e2fbce18958c:-949873964,40bcc91e31bc18104d1c0aa2a1457a7b:1471148283,9f6c499adbbc18107302eb974b2ec634:364310748,f32c49da33bc1810a2b5eb1bdc5d9bde:708446464,1a0c01da56bc18107089d246febb2760:1907257170,0abb015a09bc181079056ac2f263946d:-1504029358,2d9b0d9a9cbc1810cad4195fe73441a0:84106542,c57bc5d242bc1810c281773bc69a4e2a:260299679,d40b0d1693bc18108d741373dcdf3706:-180672428,b08a099270bc18105a9c851c92ce29da:-651386013,a2178d12b6bc18106012464f49aa1d5d:186297442,0a0745d29dbc1810dfbb5cb183383701:1621779278,9db64552d8bc18102f8052d4a45fd070:721604039,9c96cdde507c1810c78dc1f1ddbe98f7:-1713456105,d1d5055269bc1810bfc474c4153558f3:1863533866,25958d12f1bc181035763e251d539056:-1522100782,536545121cbc18102f9093982ffc912e:689499681,c23549deda7c1810b925b96ccd1896ad:1385140028,fb0505dee77c1810867a80c9b1c70682:-566086120,2be449deb57c181003676a54a5c771a6:-796500334,44d409de5b7c18109bf7e045e9e142b5:-963953015,bda409da467c1810233f32fd9e4865e9:-829596579,4e04c19eaf7c1810de85fb85926da7a2:1661871576,ab63c15e067c18101f512b880616eea6:-90337889,e5d2c1dab77c1810e66c14dd0c4995a9:873284065,9d920ddac87c181003f9a7de910bcfa9:458956439,d072c59a967c1810cd02f43fec29cc99:1037005683,b53281daca7c181061afbf29f820cdcc:1435617803,c0028596947c18103cd15d58443f4906:-1462046559,6dc1819a677c1810c67436a1c1a97aa2:-907010271,e391819a657c18103900f47735270e53:1187345829,6ea005d6357c1810a520f3a5134ee528:1492803978,4f408596e87c181097e748da50a0ba0c:-1651466072,ee000d92a57c1810e0b301fc08176c58:55689288,158f7496787c181075299cfdcd3f08e3:-1228399632,0a6fb0961e7c18101f519691037106ba:1876707997,f7fe3892f87c1810f2bbe1c2b3153903:385527485,04ddf0de033c1810ab5bd44775c43fe8:2002476805,19adf492557c1810f284d65f7777856e:1015649261,512d30dea03c18102fe9badd9047b84c:619286849,afdcf452eb7c1810d94aeb6eb2474f00:-1519056675,be8cb012637c1810b3141f243f611587:-1798077235,833bf0de7f3c18102ae9c9825e4a2bb9:-1692139040,b51bfc9e463c181088719f1552e698a3:1618164393,c2aa309a993c1810e0eca94930211ade:892091759,623a749abc3c181012f8951e6283b1de:-2033708314,93a9749ae23c181073d0bd163f6253ac:328477647,c1f8fc1a2e3c18109401c7424ae04e84:-290783240,bec87c5a9c3c1810fb5b44f25ec624a9:-2107679286,f8587c5af63c18106cd72819bdf6bf8c:-590608248,9a28fc1ace3c1810b5c8cd8f3d2c1ca6:-1091516880,3908b4965c3c18108e258cfb540a4d08:-1571419824,8ea7f4d6bf3c181045961c6e5d9173d1:299727818,80f6b0d6733c1810f6485c6495947ae6:1428725267,34c6bc96213c18108038269e4996c7e7:1240129168,8976bc963e3c1810a9a4911322baa4a6:-579485424,5026b496dd3c181061d6cad2a1c34101:-1468783687,d406fc16a53c181071cfab1a7caec31b:-503930588,04d57c56273c1810c1eb67cd810bbf0e:-1468783687,47b5b856ac3c18103ddf86e3bce0c695:-885214352,bf957416c63c1810dd68f038a819e515:-1468783687,f745f0d20e3c181082e82dd7778ee802:195387595,2be47416303c18105dc80f56acf16c10:766278352,2dc4f0d24d3c1810f5a150ab2e127311:-3482208,b8a43cd2e43c18109ea6316d9b9ac6e5:-1504925688,7784f852c23c18103c4ff49e72601773:-2051991335,2944fc921a3c18100549930726015d37:1456375417,b024fc92ac3c1810904d7e908d6f8732:-1368751685,0ef3b8921c3c18104e4b21dd1df84596:1767867611,a7a33c9ea5f8181086d434d11694f1d0:-34614966,7f53309e2af81810b9e0fb239a56a1a8:426050619,e6c2f812a13c1810eb9045ecb5b7ae56:-2060738454,8f627012813c1810a4e848539ec6f495:-2099881876,ae12781e0bf81810a7beac870c717b66:119013294,d1a13c9e89f81810250099ee57013ac7:-887209370,b121345ac0f81810f72f4e7696582b41:357218291,b180781e6ff81810e43596af668ad6ab:1784699002,b04ee05a96f81810f359260cbb9905d4:1201738233,aafd201a81f8181040fa396a4c758ef4:-1681519741,58cd20d638f818101dba0b3ac8965c64:-1732798208,ee8d201acff81810e73fc2666cda664b:929036930,4dfc2012f1f81810b321dbeb6120fca6:-728682740,724c5cdaa778181064131bfbca28588a:1049892921,b77b18d614781810f05103e4638d4479:1967348944,5b3b5cd67578181086312238e5627718:915110010,735a141aa4781810893a778b5db9588e:-1068426342,ca4a181a397818107bc39620dbd8caab:580787523,b3b998d6f378181051c5a719313029bc:1310216226,ba795096a37818108c9e8904eed18b70:402635662,e2c81892ca78181000e09bb34d56f8e4:-689714329,c103009eceb41810b2df77e4d3c2b055:1199821949,1bb3c220cdf01c506961f41fe5875518:-887933573,a8ae3de812b01c509d8cced070481b92:1003573397,5e7e39688ab01c5089d9d06ce107f5ee:380259772,f93731ec21701c5048de8a34da351c78:1003573397,cde6b9e882701c5005c61d3aa919f50b:1827327537,1e5194f5733b00103c2e5c74f2b36a25:1010315850,39d094f5cb3b001052c1f8c4cba78920:-1189280746,11801871353b00106484c1f2fa9e37ba:1122164809,5740dc35463b0010a93af3b72b4b2e90:-669758535,0fad0871583b00101b92f43bb022c3b2:206627842,de7d407d77f700108a011f3cf5aaaa2a:-2056462085,af3d0831693b001013c1f26a4cda2df7:206627842,630d8c7d97f700107bbbb27b66e577eb:-1580291844,c0bcccfddcf7001072e6d554ed7e2218:1147943379,fd7c007de7f700108c95810db0ed602c:-1223918426,12cb007da7f70010bf5beec29539d0ce:-1556917681,555b0c7d39f700105885188af24d2e98:1046115169,613b047d04f7001038c3971312901f5c:-221371360,1d0b047d22f700106107c4849f207355:1017794738,4dea083d23f7001040cc0eb2d829b879:-1245256344,2aca843943f7001041f93e2a684c2db8:-687273507,f1ba403df7f7001059c3da5f0cce6ef3:1404098286,449a003d60f70010cad9bb4e1e89434a:-1823269961,597ac0f5aaf70010febc06de2bd3e7fa:1986243320,815a403d74f7001015b6f2d7b51a8fad:-793787911,4588803902f70010f079e322b4778fc2:153176125,4758c83597f70010cf3ad72dfcb75f9c:-793787911,59570cf1b3f700101d92a2fd81f1200e:-2024710500,4d2740358bf7001082458d6133e8b2cb:-329085999,2ff60c35fbf7001091608bed73f1b78f:-967513090,6dc6c83527f700101fdb11463d576994:-894747865,f986c4313ef700105daead9153b287ae:200140211,99664035a8f700106c275840b739118f:1738568173,6d36c4b15ff70010bf06e6ca0021777e:-162214711,77f540f14af7001055c7879d09b31c28:-597204176,d8c5c4b17bf70010367028597ac926bb:436683345,e9658475e0b700103e52c35efa959443:451873078,2045c07df9b70010622cae522986bacf:-999212412,f824c8bdebb7001083d4da67ec7a5d4d:886862543,1de0c03923b70010cbcdb0353b20cba9:-1558088724,ae0fb329e6b700102c5bb18dcfb2bfd6:-1269793438,37fb2725b43700103461410384f8458e:299306535,cd796be1a3370010019cb75856514907:-1699217339,ead82fa1573700103564771303056b42:-1329475413,5f986fe1a8370010a4b3d3b5b68c186d:1865157127,d8782be1de370010679ee2181f9d1bf5:857448661,ac6827e18b370010f1fcf256ed84ab9a:1759982130,ef0827ad85f30010b084b3325c0e4b66:-1808798767,c5f7eba1883700107f49b2c6d447deef:-1903488634,11a723ed51f30010115f0acbdb170ae3:-1808798767,3587ef6df3f30010179acb92ea7cb27c:1278979352,78f5a36d84f300100fa2504dcb3e946b:916929519,b8b563ed74f30010010ac49f2fb22701:1238747270,6725e3ad65f30010bf75303970153496:1307067473,9c05af6d8ef30010f8f9006c63632fc9:250417500,5bc4ab2d27f300100d7fcf43cd62c866:-678530697,0f54e7e975f300106583858fdfa7f9b4:250417500,e834efa993f300106241206ed3ce1962:367647093,98f3e7e909f300103d5babe1a2bbb1fb:140974884,377323e98df30010e84ed02cce46e076:1322111173,c563ef694cf30010fdfd200639891020:1276723301,342367a914f3001069d5fe7986da9b5d:1816748385,c1d2e36912f30010a7aba7a0f0f9ef07:-573403049,a5522b691df30010c947cb2ae8139f30:406348417,79122b297bf300105c422ffd2b8284cf:1001480074,26e12f2911f30010aeac4e734ab488dd:-318874358,1bb12329f2f30010188a94cd50156c7e:202474378,67316f254df3001037b7bab0b6f888f0:-1982575894,e3c0a32d2eb300106c3965ef5bc56c69:-166299315,2b20636546f3001086dff372fdbb9fde:219873862,1c7f9325caf30010e6fa41cb1bfa1d5e:414732641,564edba964b30010d5feeeb7aea848ab:-1511495800,8179d7a9eab30010af05f77aac371a3b:-1546716188,d039dba954b3001026a3e9a685480da0:452978504,69f893a1deb3001048b9379cac4adb83:1855661560,83a8d3290ab30010e994a6aaa06bcdad:965758757,79a7d32982b3001015b3396b2d1b37a6:1165816463,6e261f6580b30010d141ca289e1bce88:104900876,78dfe31d6afb801084cd62c9a845da09:-39597862,350e6f55b6fb8010ca3bd1035946f357:873188983,8abff8f4c17b80107621abac4016e04f:-686270279,8ea07845cf56801006c612d954bc7306:-1106002994,558f2c452556801066ece2b622e581b0:1692724162</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
