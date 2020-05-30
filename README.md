@@ -76,7 +76,7 @@ var answer = new CommonLibraryFunctions().getRecord(options);
 gs.print("getRecord:" + answer.getRowCount());
 ```
 
-- **getFieldValue**: Utility function that returns a field value of a record. This can be used both on client and server side.
+- **getField**: Utility function that returns a field value of a record. This can be used both on client and server side.
 
 ```javascript
 //Server side
@@ -86,8 +86,8 @@ var options = {
     query: "sys_id=" + gs.getUserID(),
     field: "manager",
 };
-var answer = JSON.parse(new CommonLibraryFunctions().getFieldValue(options));
-gs.print("getFieldValue:" + JSON.stringify(answer));
+var answer = JSON.parse(new CommonLibraryFunctions().getField(options));
+gs.print("getField:" + JSON.stringify(answer));
 
 //Client side
 
@@ -97,16 +97,16 @@ var options = {
     field: "manager",
 };
 
-var ga = new GlideAjax("CommonLibraryFunctions");
-ga.addParam("sysparm_name", "getFieldValue");
-ga.addParam("sysparm_options", JSON.stringify(options));
+var ga = new GlideAjax('CommonLibraryFunctions');
+ga.addParam('sysparm_name', 'getField');
+ga.addParam('sysparm_options', JSON.stringify(options));
 ga.getXML(function (response) {
     var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
-    alert("getFieldValue:" + JSON.stringify(answer));
+    alert("getField:" + JSON.stringify(answer));
 });
 ```
 
-- **getRecordsFieldValue**: Utility function that returns a field value of multiple records. Return data also includes duplicate. This can be used both on client and server side.
+- **getRecordsField**: Utility function that returns a field value of multiple records. Return data also includes duplicate. This can be used both on client and server side.
 
 ```javascript
 //Server side
@@ -116,8 +116,8 @@ var options = {
     query: "active=true",
     field: "number",
 };
-var answer = JSON.parse(new CommonLibraryFunctions().getRecordsFieldValue(options));
-gs.print("getRecordsFieldValue:" + JSON.stringify(answer));
+var answer = JSON.parse(new CommonLibraryFunctions().getRecordsField(options));
+gs.print("getRecordsField:" + JSON.stringify(answer));
 
 //Client side
 
@@ -127,12 +127,12 @@ var options = {
     field: "number",
 };
 
-var ga = new GlideAjax("CommonLibraryFunctions");
-ga.addParam("sysparm_name", "getRecordsFieldValue");
-ga.addParam("sysparm_options", JSON.stringify(options));
+var ga = new GlideAjax('CommonLibraryFunctions');
+ga.addParam('sysparm_name', 'getRecordsField');
+ga.addParam('sysparm_options', JSON.stringify(options));
 ga.getXML(function (response) {
     var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
-    alert("getRecordsFieldValue:" + JSON.stringify(answer));
+    alert("getRecordsField:" + JSON.stringify(answer));
 });
 ```
 
@@ -205,9 +205,9 @@ ga.getXML(function (response) {
 });
 ```
 
-- **executeScheduledJob**: Utility function to execute a scheduled job. This can be used both on client and server side.
+- **executeJob**: Utility function to execute a scheduled job. This can be used both on client and server side.
 
-- **customErrorLogger**: Utility function used to log message. This can be used both on client and server side.
+- **log**: Utility function used to log message. This can be used both on client and server side.
 
 ```javascript
 //Server side
