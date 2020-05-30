@@ -162,7 +162,7 @@ ga.addParam('sysparm_name', 'getUnique');
 ga.addParam('sysparm_options', JSON.stringify(options));
 ga.getXML(function (response) {
     var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
-    log("getUnique:" + JSON.stringify(answer));
+    alert("getUnique:" + JSON.stringify(answer));
 });
 ```
 
