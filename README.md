@@ -136,7 +136,7 @@ ga.getXML(function (response) {
 });
 ```
 
-- **getUniqueValue**: Utility function that returns list of unique values of records. This can be used both on client and server side.
+- **getUnique**: Utility function that returns list of unique values of records. This can be used both on client and server side.
 
 ```javascript
 //Server side
@@ -146,8 +146,8 @@ var options = {
     query: "active=true",
     field: "category",
 };
-var answer = JSON.parse(new CommonLibraryFunctions().getUniqueValue(options));
-gs.print("getUniqueValue:" + JSON.stringify(answer));
+var answer = JSON.parse(new CommonLibraryFunctions().getUnique(options));
+gs.print("getUnique:" + JSON.stringify(answer));
 
 //Client side
 
@@ -157,12 +157,12 @@ var options = {
     field: "category",
 };
 
-var ga = new GlideAjax("CommonLibraryFunctions");
-ga.addParam("sysparm_name", "getUniqueValue");
-ga.addParam("sysparm_options", JSON.stringify(options));
+var ga = new GlideAjax('CommonLibraryFunctions');
+ga.addParam('sysparm_name', 'getUnique');
+ga.addParam('sysparm_options', JSON.stringify(options));
 ga.getXML(function (response) {
     var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
-    alert("getUniqueValue:" + JSON.stringify(answer));
+    log("getUnique:" + JSON.stringify(answer));
 });
 ```
 
