@@ -177,7 +177,7 @@ var answer = new CommonLibraryFunctions().getAggregate(options);
 gs.print("getAggregate:" + answer.getRowCount());
 ```
 
-- **getRecordCount**: Utility function that returns count of records. This can be used on both client and server side.
+- **getCount**: Utility function that returns count of records. This can be used on both client and server side.
 
 ```javascript
 //Server side
@@ -186,8 +186,8 @@ var options = {
     table: "incident",
     query: "active=true",
 };
-var answer = JSON.parse(new CommonLibraryFunctions().getRecordCount(options));
-gs.print("getRecordCount:" + JSON.stringify(answer));
+var answer = JSON.parse(new CommonLibraryFunctions().getCount(options));
+gs.print("getCount:" + JSON.stringify(answer));
 
 //Client side
 
@@ -197,11 +197,11 @@ var options = {
 };
 
 var ga = new GlideAjax("CommonLibraryFunctions");
-ga.addParam("sysparm_name", "getRecordCount");
+ga.addParam("sysparm_name", "getCount");
 ga.addParam("sysparm_options", JSON.stringify(options));
 ga.getXML(function (response) {
     var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
-    alert("getRecordCount:" + JSON.stringify(answer));
+    alert("getCount:" + JSON.stringify(answer));
 });
 ```
 
